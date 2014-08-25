@@ -10,6 +10,14 @@ class TimelinesController < ApplicationController
   # GET /timelines/1
   # GET /timelines/1.json
   def show
+    # trying to place things on timeline
+    # (D / T) * (# of pixels in the line)
+    if @timeline.events.count > 0
+      events = @timeline.events.order(:date)
+      start_date = events.first.date
+      end_date = events.last.date
+      total_length = end_date - start_date
+    end
   end
 
   # GET /timelines/new
@@ -69,6 +77,6 @@ class TimelinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def timeline_params
-      params[:timeline]
+      params.require(:timeline).permit(:title, :description)
     end
 end

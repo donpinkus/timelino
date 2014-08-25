@@ -1,0 +1,57 @@
+body, html {
+	background: #E9EAED;
+}
+
+#timeline {
+	padding: 20px;
+	width: 970px;
+	margin: 0 auto;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	background: white;
+
+	header {
+		h1 {
+			margin-top: 0;
+			margin-bottom: 5px;
+		}
+		p {
+			margin-top: 0;
+		}
+		#navigator {
+			position: relative;
+			height: 35px;
+			.line {
+				border-top: 3px solid #AAA;
+				position: absolute;
+				top: 17px;
+				width: 928px;
+			}
+		}
+	}
+
+	hr {
+		border-top: 1px solid #ccc;
+	}
+
+	article {
+		margin-bottom: 10px;
+		.dateContainer {
+			width: 215px;
+			float: left;
+			clear: none;
+			color: #999;
+			h4 {
+				margin-top: 0;
+			}
+		}
+		.contentContainer {
+			float: left;
+			clear: none;
+			h4 {
+				margin-top: 0;
+				margin-bottom: 5px;
+			}
+		}
+	}
+}

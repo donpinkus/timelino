@@ -1,4 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%= notice %>
+<br/>
 
-<%= link_to 'Edit', edit_timeline_path(@timeline) %> |
-<%= link_to 'Back', timelines_path %>
+<div id="timeline">
+	<header>
+		<button class="btn btn-primary btn-sm pull-right">Add Event</button>
+		<h1><%= @timeline.title %></h1>
+		<p><%= @timeline.description %></p>
+
+		<div id="navigator">
+			<div class="hovers"></div>
+			<div class="line"></div>
+			<div class="labels"></div>
+		</div>
+
+	</header>
+	<hr/>
+
+	<main>
+		<% @timeline.events.each do |e| %>
+			<article class="clearfix">
+				<div class="dateContainer">
+					<h4><%= e.date.strftime("%B %Y") %></h4>
+				</div>
+
+				<div class="contentContainer">
+					<h4><%= e.title %> <small></small></h4>
+					<p><%= e.content %></p>
+				</div>
+			</article>
+		<% end %>
+	</main>
+</div>
