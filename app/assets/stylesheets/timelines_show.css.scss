@@ -5,7 +5,7 @@ body, html {
 #timeline {
 	padding: 20px;
 	width: 970px;
-	margin: 0 auto;
+	margin: 0 auto 40px;
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	background: white;
@@ -27,6 +27,38 @@ body, html {
 				top: 17px;
 				width: 928px;
 			}
+			.marks {
+				position: relative; 
+				list-style: none;
+				margin: 0;
+				a {
+					li {
+						position: absolute;
+						top: 13px;
+						border-radius: 50%;
+						width: 11px;
+						height: 11px;
+						background: white;
+						border: 1px solid rgba(0,0,0,0.2);
+						&:hover {
+							background: lightgray;
+							.date {
+								display: block !important;
+								visibility: visible !important;
+							}
+						}
+						&.active {
+							background: gray;
+						}
+						.date {
+							margin-top: -17px;
+							display: block;
+							width: 100px;
+							color: black;
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -37,20 +69,28 @@ body, html {
 	article {
 		margin-bottom: 10px;
 		.dateContainer {
-			width: 215px;
+			width: 20%;
 			float: left;
 			clear: none;
 			color: #999;
 			h4 {
 				margin-top: 0;
+				font-weight: bold;
+				font-size: 17px;
 			}
 		}
 		.contentContainer {
+			width: 80%;
 			float: left;
 			clear: none;
 			h4 {
 				margin-top: 0;
 				margin-bottom: 5px;
+				font-weight: bold;
+				font-size: 17px;
+			}
+			p {
+				white-space: pre;
 			}
 		}
 	}

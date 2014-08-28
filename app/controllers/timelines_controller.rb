@@ -14,9 +14,9 @@ class TimelinesController < ApplicationController
     # (D / T) * (# of pixels in the line)
     if @timeline.events.count > 0
       events = @timeline.events.order(:date)
-      start_date = events.first.date
+      @start_date = events.first.date
       end_date = events.last.date
-      total_length = end_date - start_date
+      @total_time_length = end_date - @start_date
     end
   end
 
