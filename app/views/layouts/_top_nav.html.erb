@@ -12,23 +12,32 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "All", timelines_path %></li>
-        <li><%= link_to "New", new_timeline_path %></a></li>
-      </ul>
-      
-      <% if 1 == 1 %>
-        <%= link_to "Sign Up", "#new_user_registration_path", class: "btn btn-primary navbar-btn pull-right" %>
-      <% end %>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "All", timelines_path %></li>
+      <li><%= link_to "New", new_timeline_path %></a></li>
+    </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <% if 1 == 2 %>
-       
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <% if current_user %>
+          <a href="#" 
+            class="dropdown-toggle" 
+            data-toggle="dropdown">
+            <img src="https://graph.facebook.com/<%= current_user.uid %>/picture?width=64&height=64" height="32px">
+            <strong><%= current_user.name %></strong>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">My Timelines</a></li>
+            <li class="divider"></li>
+            <li><a href="/signout">Log Out</a></li>
+          </ul>
         <% else %>
-          <li><a href="#" data-toggle="modal" data-target="#signInModal">Sign in &nbsp; </a></li>
+          <form class="navbar-form">
+            <%= link_to "Sign in with Facebook", "/auth/facebook", class: "btn btn-primary", id: "sign_in" %>
+          </form>
         <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
+      </li>
+    </ul>
   </div><!-- /.container-fluid -->
 </nav>
