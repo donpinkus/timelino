@@ -7,7 +7,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :image
       t.text :caption
       t.references :timeline, index: true
-
+      t.references :user, index: true, default: 0
+      
       t.timestamps
     end
   end

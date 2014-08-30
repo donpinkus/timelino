@@ -26,14 +26,17 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+    @event.user = current_user
+
+    if @event.save
+      if current_user
+        redirect_to @event.timeline, notice: 'Event published.'
       else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        session[:unsaved_event] = @event.id
+        redirect_to "/auth/facebook"
       end
+    else
+      render :new
     end
   end
 
