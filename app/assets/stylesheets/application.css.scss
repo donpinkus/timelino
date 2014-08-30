@@ -27,3 +27,19 @@
 * {
 	box-sizing: border-box;
 }
+
+#topNav {
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	.navbar-nav {
+		height: 62px;
+		#avatar {
+			margin-top: -6px;
+			border-radius: 50%;
+		}
+		.dropdown-toggle {
+			height: 62px;
+		}
+	}
+}
