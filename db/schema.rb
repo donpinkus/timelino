@@ -11,29 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140830033252) do
+ActiveRecord::Schema.define(version: 20140829202751) do
 
   create_table "events", force: true do |t|
-    t.datetime "date"
+    t.datetime "date",        default: '2014-08-30 08:18:04'
     t.string   "title"
     t.text     "content"
     t.string   "image"
     t.text     "caption"
     t.integer  "timeline_id"
+    t.integer  "user_id",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   add_index "events", ["timeline_id"], name: "index_events_on_timeline_id"
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "timelines", force: true do |t|
+    t.integer  "user_id",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
     t.text     "description"
-    t.integer  "user_id"
   end
 
   add_index "timelines", ["user_id"], name: "index_timelines_on_user_id"

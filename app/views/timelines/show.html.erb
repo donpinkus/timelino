@@ -16,29 +16,42 @@
 		<h1><%= @timeline.title %></h1>
 		<p><%= @timeline.description %></p>
 
-		<div id="navigator">
-			<div class="hovers"></div>
-			<div class="line"></div>
-			<div class="labels"></div>
-			<ul class="marks">
-				<% @timeline.events.each do |e| %>
-					<% left = ((e.date - @start_date) / @total_time_length) * 928 - 5 %>
-					<a href="#<%= e.title.parameterize %>">
-						<li style="left: <%= left %>px">
-							<small class="date <%= e.date == @start_date ? '' : 'hidden' %>">
-								<%= e.date.strftime("%B %d, %Y") %>
-							</small>
-						</li>
-					</a>
-				<% end %>
-			</ul>
-		</div>
+		<% if @timeline.events.count > 0 %>
+			<div id="navigator">
+				<div class="hovers"></div>
+				<div class="line"></div>
+				<div class="labels"></div>
+				<ul class="marks">
+					<% @timeline.events.each do |e| %>
+						<% left = ((e.date - @start_date) / @total_time_length) * 928 - 5 %>
+						<a href="#<%= e.title.parameterize %>">
+							<li style="left: <%= left %>px">
+								<small class="date <%= e.date == @start_date ? '' : 'hidden' %>">
+									<%= e.date.strftime("%B %d, %Y") %>
+								</small>
+							</li>
+						</a>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
 	</header>
 
 	<hr/>
 
 	<main>
-		<% @timeline.events.each do |e| %>
+		<% if @timeline.events.count == 0 %>
+			<br/>
+			<div class=" text-center">
+				<h4>This timeline has no events, yet.</h4>
+				<button class="btn btn-success" data-toggle="modal" data-target="#addEventModal">
+					Add Event
+				</button>
+			</div>
+			<br/>
+		<% end %>
+
+		<% @timeline.events.order("date ASC").each do |e| %>
 			<article class="clearfix">
 				<div class="dateContainer">
 					<h4><%= e.date.strftime("%B %d, %Y") %></h4>

@@ -13,7 +13,7 @@ class TimelinesController < ApplicationController
     # trying to place things on timeline
     # (D / T) * (# of pixels in the line)
     if @timeline.events.where("user_id > 0").count > 0
-      events = @timeline.events.where("user_id > 0").order(:date)
+      events = @timeline.events.where("user_id > 0").order("date ASC")
       @start_date = events.first.date
       end_date = events.last.date
       @total_time_length = end_date - @start_date
