@@ -14,7 +14,7 @@
 			</button>
 		</div>
 		<h1><%= @timeline.title %></h1>
-		<p><%= @timeline.description %></p>
+		<p><%= raw(@timeline.render_description) %></p>
 
 		<% if @timeline.events.count > 0 %>
 			<div id="navigator">
@@ -59,7 +59,7 @@
 
 				<div class="contentContainer" id="<%= e.title.parameterize %>">
 					<h4><%= e.title %></h4>
-					<p><%= e.content %></p>
+					<p><%= raw(e.render_content) %></p>
 				</div>
 			</article>
 		<% end %>
