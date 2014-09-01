@@ -38,6 +38,9 @@ gem 'omniauth-facebook'
 # Redcarpet for Markdown
 gem 'redcarpet'
 
+# Figaro for different storing keys
+gem 'figaro'
+
 group :development, :test do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
