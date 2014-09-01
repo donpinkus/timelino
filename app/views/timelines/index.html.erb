@@ -1,29 +1,17 @@
 <div class="container">
-  <h1>Listing timelines</h1>
+  <h1>Timelines</h1>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @timelines.each do |timeline| %>
-        <tr>
-          <td><%= timeline.title %></td>
-          <td><%= timeline.description %></td>
-          <td><%= link_to 'Show', timeline %></td>
-          <td><%= link_to 'Edit', edit_timeline_path(timeline) %></td>
-          <td><%= link_to 'Destroy', timeline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+  <% @timelines.each do |timeline| %>
+    <div class="timeline">
+      <img class="avatar" src="https://graph.facebook.com/<%= current_user.uid %>/picture?width=64&height=64" height="32px">
+      
+      <%= link_to timeline do %>
+        <h4 class="title"><%= timeline.title %></h4>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  <% end %>
 
   <br>
 
-  <%= link_to 'New Timeline', new_timeline_path %>
+  <%= link_to 'New Timeline', new_timeline_path, class: "btn btn-primary" %>
 </div>

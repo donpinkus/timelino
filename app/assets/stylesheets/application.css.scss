@@ -28,13 +28,17 @@
 	box-sizing: border-box;
 }
 
+.avatar {
+	border-radius: 50%;
+}
+
 #topNav {
 	border-top: 0px;
 	border-left: 0px;
 	border-right: 0px;
 	.navbar-nav {
 		height: 62px;
-		#avatar {
+		.avatar {
 			margin-top: -6px;
 			border-radius: 50%;
 		}
