@@ -11,7 +11,7 @@
         <img class="avatar pull-right" 
           src="https://graph.facebook.com/<%= timeline.user.uid %>/picture?width=64&height=64" 
           height="32px">
-        <h4 class="title"><%= timeline.title %></h4>
+        <h4 class="title"><%= timeline.title.titleize %></h4>
         <p class="tagline"><%= timeline.tagline %></p>
       </div> 
     <% end %>
