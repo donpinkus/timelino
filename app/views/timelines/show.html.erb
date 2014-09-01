@@ -59,7 +59,9 @@
 
 				<div class="contentContainer" id="<%= e.title.parameterize %>">
 					<h4><%= e.title %></h4>
-					<p><%= raw(e.render_content) %></p>
+					<div>
+						<%= raw(e.render_content) %>
+					</div>
 				</div>
 			</article>
 		<% end %>
