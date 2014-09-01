@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :save_unsaved_events
+  before_action :save_unsaved_timelines
 
   private
 
@@ -20,6 +21,17 @@ class ApplicationController < ActionController::Base
   			redirect_to timeline_path(@event.timeline), notice: 'Event published.'
   		end
   	end
+  end
+
+  def save_unsaved_timelines
+    if current_user && session[:unsaved_timeline]
+      @timeline = Timeline.find(session[:unsaved_timeline])
+      @timeline.user = current_user
+      if @timeline.save
+        session[:unsaved_timeline] = nil
+        redirect_to timeline_path(@timeline), notice: 'Timeline published.'
+      end
+    end
   end
   
   helper_method :current_user

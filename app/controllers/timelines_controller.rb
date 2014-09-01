@@ -34,14 +34,17 @@ class TimelinesController < ApplicationController
   def create
     @timeline = Timeline.new(timeline_params)
 
-    respond_to do |format|
-      if @timeline.save
-        format.html { redirect_to @timeline, notice: 'Timeline was successfully created.' }
-        format.json { render :show, status: :created, location: @timeline }
+    @timeline.user = current_user
+
+    if @timeline.save
+      if current_user
+        redirect_to @timeline, notice: "Timeline published."
       else
-        format.html { render :new }
-        format.json { render json: @timeline.errors, status: :unprocessable_entity }
+        session[:unsaved_timeline] = @timeline.id
+        redirect_to "/auth/facebook"
       end
+    else
+      render :new
     end
   end
 
