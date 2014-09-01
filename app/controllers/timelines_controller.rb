@@ -1,5 +1,6 @@
 class TimelinesController < ApplicationController
   before_action :set_timeline, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /timelines
   # GET /timelines.json
@@ -81,5 +82,11 @@ class TimelinesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def timeline_params
       params.require(:timeline).permit(:title, :tagline, :description)
+    end
+
+    def correct_user
+      if @timeline.user != current_user
+        redirect_to timelines_path, notice: "You may only edit timelines you own."
+      end
     end
 end
