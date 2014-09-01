@@ -6,15 +6,14 @@
   </h2>
 
   <% @timelines.each do |timeline| %>
-    <div class="timeline">
-      <%= link_to timeline do %>
+    <%= link_to timeline, class: "timelineContainer" do %>
+      <div class="timeline">
         <img class="avatar pull-right" 
           src="https://graph.facebook.com/<%= timeline.user.uid %>/picture?width=64&height=64" 
           height="32px">
         <h4 class="title"><%= timeline.title %></h4>
         <p class="tagline"><%= timeline.tagline %></p>
-        
-      <% end %>
-    </div>
+      </div> 
+    <% end %>
   <% end %>
 </div>
