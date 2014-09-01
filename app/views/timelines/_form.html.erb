@@ -1,7 +1,9 @@
 <%= form_for(@timeline) do |f| %>
   <% if @timeline.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@timeline.errors.count, "error") %> prohibited this timeline from being saved:</h2>
+      <h2>
+        <%= pluralize(@timeline.errors.count, "error") %> prohibited this timeline from being saved:
+      </h2>
 
       <ul>
       <% @timeline.errors.full_messages.each do |message| %>
@@ -11,15 +13,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "Dinosaurs", class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, placeholder: "The history of dinosaurs, including T-rexes.", class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
