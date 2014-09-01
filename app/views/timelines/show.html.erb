@@ -8,11 +8,14 @@
 				<i class="glyphicon glyphicon-plus"></i>
 				Add Event
 			</button>
-			<%= link_to edit_timeline_path(@timeline), class: "btn btn-default btn-sm" do %>
-				<i class="glyphicon glyphicon-pencil"></i>
-				Edit
+			<% if @timeline.user == current_user %>
+				<%= link_to edit_timeline_path(@timeline), class: "btn btn-default btn-sm" do %>
+					<i class="glyphicon glyphicon-pencil"></i>
+					Edit
+				<% end %>
 			<% end %>
 		</div>
+		
 		<h1><%= @timeline.title %></h1>
 		<p><%= raw(@timeline.render_description) %></p>
 
