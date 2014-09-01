@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829202751) do
+ActiveRecord::Schema.define(version: 20140901182723) do
 
   create_table "events", force: true do |t|
     t.datetime "date",        default: '2014-08-30 08:18:04'
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140829202751) do
     t.datetime "updated_at"
     t.string   "title"
     t.text     "description"
+    t.string   "tagline"
   end
 
   add_index "timelines", ["user_id"], name: "index_timelines_on_user_id"
