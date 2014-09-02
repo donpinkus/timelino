@@ -41,6 +41,12 @@ gem 'redcarpet'
 # Figaro for different storing keys
 gem 'figaro'
 
+# For easy administration.
+gem 'activeadmin', github: 'activeadmin'
+
+# Used for Active Admin auth.
+gem 'devise'
+
 group :development, :test do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
