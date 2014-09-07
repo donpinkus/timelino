@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902220705) do
+ActiveRecord::Schema.define(version: 20140905225046) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -60,6 +60,24 @@ ActiveRecord::Schema.define(version: 20140902220705) do
 
   add_index "events", ["timeline_id"], name: "index_events_on_timeline_id"
   add_index "events", ["user_id"], name: "index_events_on_user_id"
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "timeline_tags_count", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "timeline_tags", force: true do |t|
+    t.integer  "timeline_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "timeline_tags", ["tag_id"], name: "index_timeline_tags_on_tag_id"
+  add_index "timeline_tags", ["timeline_id"], name: "index_timeline_tags_on_timeline_id"
 
   create_table "timelines", force: true do |t|
     t.integer  "user_id",     default: 0

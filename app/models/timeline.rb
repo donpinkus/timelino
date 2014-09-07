@@ -1,6 +1,10 @@
 class Timeline < ActiveRecord::Base
 	belongs_to :user
+	
 	has_many :events
+
+	has_many :timeline_tags
+	has_many :tags, through: :timeline_tags
 
 	validates_length_of :title, :minimum => 3, :maximum => 50
 	validates_length_of :tagline, :minimum => 10, :maximum => 100

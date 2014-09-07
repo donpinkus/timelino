@@ -6,14 +6,21 @@
   </h2>
 
   <% @timelines.each do |timeline| %>
-    <%= link_to timeline, class: "timelineContainer" do %>
+    <div class="timelineContainer">
       <div class="timeline">
         <img class="avatar pull-right" 
           src="https://graph.facebook.com/<%= timeline.user.uid %>/picture?width=64&height=64" 
           height="32px">
-        <h4 class="title"><%= timeline.title.titleize %></h4>
+        <h4 class="title"><%= link_to timeline.title.titleize, timeline %></h4>
         <p class="tagline"><%= timeline.tagline %></p>
+        <% if timeline.tags.count > 0 %>
+          <p>
+            <% timeline.tags.each do |tag| %>
+              <%= render partial: "tags/tag", locals: {tag: tag, show_count: false} %>
+            <% end %>
+          </p>
+        <% end %>
       </div> 
-    <% end %>
+    </div>
   <% end %>
 </div>
