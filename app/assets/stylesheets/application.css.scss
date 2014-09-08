@@ -21,6 +21,16 @@
 @import 'global/nav_variables';
 @import 'bootstrap';
 
+$dark-text: #444;
+$medium-text: #555;
+$light-text: #999;
+
+$green: #2F97E9;
+
+$light-gray: #F9F9F9;
+$medium-gray: #EEEEEF;
+$border-gray: #DADADD;
+
 /**
  * Global Styles
  */
@@ -45,5 +55,20 @@
 		.dropdown-toggle {
 			height: 62px;
 		}
+	}
+}
+
+.label.greenLabel {
+	display: inline-block;
+	background: transparent;
+	font-weight: normal;
+	border: 1px solid rgb(205, 236, 217);
+	background-color: rgb(249, 255, 251);
+	color: $light-text;
+	cursor: pointer;
+	&:hover {
+		background-color: rgb(249, 255, 251);
+		color: $light-text;
+		text-decoration: underline;
 	}
 }

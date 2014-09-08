@@ -5,7 +5,12 @@ class TimelinesController < ApplicationController
   # GET /timelines
   # GET /timelines.json
   def index
-    @timelines = Timeline.where("user_id > 0").order("CREATED_AT DESC")
+    if params[:tag]
+      @tag = Tag.find_by_name(params[:tag])
+      @timelines = @tag.timelines.where("user_id > 0").order("CREATED_AT DESC")
+    else
+      @timelines = Timeline.where("user_id > 0").order("CREATED_AT DESC")
+    end 
   end
 
   # GET /timelines/1

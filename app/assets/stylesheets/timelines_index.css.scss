@@ -8,6 +8,20 @@ $light-gray: #F9F9F9;
 $medium-gray: #EEEEEF;
 $border-gray: #DADADD;
 
+.tagFilterAlert {
+	padding: 8px;
+	height: 35px;
+	label {
+		cursor: default;
+	}
+	a {
+		margin-top: -3px;
+	}
+	.removeFilters {
+		color: $medium-text;
+	}
+}
+
 .timelineContainer {
 	&:hover {
 		text-decoration: none;
@@ -49,20 +63,6 @@ $border-gray: #DADADD;
 			color: #999999;
 			&:hover {
 				text-decoration: none;
-			}
-		}
-		.greenLabel {
-			display: inline-block;
-			background: transparent;
-			font-weight: normal;
-			border: 1px solid rgb(205, 236, 217);
-			background-color: rgb(249, 255, 251);
-			color: $light-text;
-			cursor: pointer;
-			&:hover {
-				background-color: rgb(249, 255, 251);
-				color: $light-text;
-				text-decoration: underline;
 			}
 		}
 	}
