@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -73,5 +74,13 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:date, :title, :content, :image, :caption, :timeline_id)
+    end
+
+    def correct_user
+      if current_user && (current_user == @event.user || current_user == @event.timeline.user)
+        true
+      else
+        redirect_to @event.timeline, notice: "You do not own this timeline nor are you the creator of this event, so you cannot edit or delete this event."
+      end
     end
 end
