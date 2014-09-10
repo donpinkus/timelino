@@ -11,31 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
-  </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
+    <%= f.label :date %><br>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+  <div class="field form-group">
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :caption %><br>
-    <%= f.text_area :caption %>
-  </div>
-  <div class="field">
-    <%= f.label :timeline_id %><br>
-    <%= f.text_field :timeline_id %>
+    <%= f.text_area :content, class: "form-control", rows: 8 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update", class: "btn btn-primary" %> 
+    <%= link_to 'Delete', 
+      @event, 
+      method: :delete, 
+      class: "btn btn-danger", 
+      data: { confirm: 'Are you sure you want to delete this event?' } %>
   </div>
 <% end %>

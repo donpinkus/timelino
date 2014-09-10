@@ -16,7 +16,7 @@
 			<% end %>
 		</div>
 		
-		<h1><%= @timeline.title.titleize %></h1>
+		<h1><%= @timeline.title %></h1>
 		<p><%= raw(@timeline.render_description) %></p>
 
 		<% if @timeline.events.count > 0 %>
@@ -61,7 +61,12 @@
 				</div>
 
 				<div class="contentContainer" id="<%= e.title.parameterize %>">
-					<h4><%= e.title.titleize %></h4>
+					<h4>
+						<%= e.title %> 
+						<% if current_user == e.user || current_user == @timeline.user %>
+							<small><%= link_to "Edit", edit_event_path(e) %></small>
+						<% end %>
+					</h4>
 					<div>
 						<%= raw(e.render_content) %>
 					</div>
